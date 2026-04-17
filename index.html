@@ -1,1 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Movie App</title>
 
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <!-- Mustache -->
+  <script src="https://unpkg.com/mustache@latest/mustache.min.js"></script>
+</head>
+<body>
+
+  <h1>Movie App</h1>
+   <!-- SEARCH -->
+  <input type="text" id="searchInput" placeholder="Search movies...">
+  <button id="searchBtn">Search</button>
+
+  <!-- VIEW SWITCH -->
+  <button id="gridBtn">Grid</button>
+  <button id="listBtn">List</button>
+
+  <!-- RESULTS -->
+  <div id="results" class="grid-view"></div>
+
+  <!-- DETAILS -->
+  <div id="details"></div>
+
+  <!-- PAGINATION -->
+  <div>
+    <button id="prevBtn">Prev</button>
+    <span id="pageInfo"></span>
+    <button id="nextBtn">Next</button>
+  </div>
+
+  <!-- MUSTACHE TEMPLATE -->
+  <script id="movie-template" type="x-tmpl-mustache">
+    <div class="movie-card" data-id="{{id}}">
+      <img src="https://image.tmdb.org/t/p/w200{{poster_path}}" />
+      <h3>{{title}}</h3>
+      <p> {{vote_average}}</p>
+    </div>
+  </script>
+
+  <script id="details-template" type="x-tmpl-mustache">
+    <div>
+      <h2>{{title}}</h2>
+      <img src="https://image.tmdb.org/t/p/w300{{poster_path}}" />
+      <p>{{overview}}</p>
+    </div>
+  </script>
+
+  <!-- JS -->
+  <script src="script.js"></script>
+
+</body>
+</html>
