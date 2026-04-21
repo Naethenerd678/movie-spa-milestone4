@@ -1,7 +1,7 @@
 let currentPage = 1;
 let currentQuery = "";
 
-const API_KEY = "your_actual_key_here";
+const API_KEY = "796ef61929e36fe299d63b551c9a6eef";
 
 // SEARCH BUTTON
 $("#searchBtn").click(function () {
@@ -47,7 +47,7 @@ $(document).on("click", ".movie-card", function () {
     data: { api_key: API_KEY },
     success: function (movie) {
       const template = $("#details-template").html();
-      const html = Mustache.render(template, movie);
+      const html = Mustache.render(template, movie);    
       $("#details").html(html);
     }
   });
