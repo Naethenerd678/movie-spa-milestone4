@@ -16,19 +16,14 @@
 <body>
 
   <h1>Movie App</h1>
-   <!-- SEARCH -->
+
+  <!-- SEARCH -->
   <input type="text" id="searchInput" placeholder="Search movies...">
   <button id="searchBtn">Search</button>
 
   <!-- VIEW SWITCH -->
   <button id="gridBtn">Grid</button>
   <button id="listBtn">List</button>
-
-  <!-- RESULTS -->
-  <div id="results" class="grid-view"></div>
-
-  <!-- DETAILS -->
-  <div id="details"></div>
 
   <!-- PAGINATION -->
   <div>
@@ -37,12 +32,18 @@
     <button id="nextBtn">Next</button>
   </div>
 
+  <!-- DETAILS -->
+  <div id="details"></div>
+
+  <!-- RESULTS -->
+  <div id="results" class="grid-view"></div>
+
   <!-- MUSTACHE TEMPLATE -->
   <script id="movie-template" type="x-tmpl-mustache">
     <div class="movie-card" data-id="{{id}}">
       <img src="https://image.tmdb.org/t/p/w200{{poster_path}}" />
       <h3>{{title}}</h3>
-      <p> {{vote_average}}</p>
+      <p>{{vote_average}}</p>
     </div>
   </script>
 
