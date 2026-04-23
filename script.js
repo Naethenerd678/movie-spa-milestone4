@@ -3,14 +3,29 @@ let currentQuery = "";
 
 const API_KEY = "796ef61929e36fe299d63b551c9a6eef";
 
-// SEARCH BUTTON
-$("#searchBtn").click(function () {
+function openTab(evt, tabID) {
+  if (tabID == 'Search_Results') {
+    $('#Collections').css('display','none');    
+    $('#Search_Results').css('display','block');       
+  } else { // tabID == 'Collections'
+    $('#Search_Results').css('display','none');    
+    $('#Collections').css('display','block');          
+  }    
+  // Hide content and remove active class from buttons
+  // Display target tab and add active class
+}
+
+function searchButtonOnClick() {
+  console.log('searchBtn');  
   currentQuery = $("#searchInput").val();
   currentPage = 1;
   searchMovies();
-});
+}
+
+
 
 function searchMovies() {
+  console.log('searchMovies();');
   $.ajax({
     url: "https://api.themoviedb.org/3/search/movie",
     method: "GET",
