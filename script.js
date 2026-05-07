@@ -29,6 +29,7 @@ function searchButtonOnClick() {
   currentPage = 1;
 
   searchMovies();
+  
 }
 
 // SEARCH MOVIES
@@ -45,6 +46,7 @@ function searchMovies() {
     },
 
     success: function(data) {
+      console.log("Current Page:", currentPage);
 
       renderMovies(data.results);
 
