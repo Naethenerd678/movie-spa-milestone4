@@ -1,37 +1,26 @@
-body {
-  font-family: Arial, sans-serif;
+.movie-card {
+  border: 1px solid #ccc;
+  margin: 10px;
+  padding: 10px;
+  cursor: pointer;
   text-align: center;
 }
 
-.movie-grid {
-  gap: 16px;
-  padding: 20px;
+.movie-card img {
+  max-width: 100%;
 }
 
-/* GRID VIEW */
+
+/* ADD THIS BELOW */
+
 .grid-view {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
 }
 
-/* LIST VIEW */
 .list-view {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.movie-card {
-  border: 1px solid #ccc;
-  padding: 10px;
-  margin: 10px;
-  width: 200px;
-}
-
-.list-view .movie-card {
-  width: 80%;
-}
-
-.movie-card img {
-  width: 100%;
 }
