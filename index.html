@@ -55,7 +55,7 @@
       <div id="details"></div>
       
       <!-- RESULTS -->
-      <div id="results" class="grid-view"></div>
+      <div id="results" class="movie-grid grid-view"></div>
 
 
       <!-- MUSTACHE TEMPLATE -->
@@ -103,6 +103,19 @@
 
 <script>
 $(document).ready(function() {
+  $("#gridBtn").click(function () {
+    $("#results")
+        .removeClass("list-view")
+        .addClass("movie-grid grid-view");
+});
+
+$("#listBtn").click(function () {
+    $("#results")
+        .removeClass("grid-view")
+        .addClass("movie-grid list-view");
+});
+
+  
     const apiUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
 
     $.ajax({
