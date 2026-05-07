@@ -61,23 +61,28 @@ function renderMovies(movies) {
 
 // CLICK MOVIE → DETAILS
 $(document).on("click", ".movie-card", function () {
+
   const id = $(this).data("id");
 
-$.ajax({
-  url: `https://api.themoviedb.org/3/movie/${id}`,
-  data: { api_key: API_KEY },
-  success: function (movie) {
-    const template = $("#details-template").html();
-    const html = Mustache.render(template, movie);    
-    $("#details").html(html);
-  },
- error: function(error) {
-    console.error("Details failed:", error);
-  }
-});
+  $.ajax({
+    url: `https://api.themoviedb.org/3/movie/${id}`,
+    data: { api_key: API_KEY },
 
-}); 
-  
+    success: function (movie) {
+      const template = $("#details-template").html();
+      const html = Mustache.render(template, movie);
+      $("#details").html(html);
+    },
+
+    error: function(error) {
+      console.error("Details failed:", error);
+    }
+
+  });
+
+}); // <-- THIS closes movie-card click
+
+
 // PAGINATION
 $("#nextBtn").click(function () {
   currentPage++;
@@ -91,11 +96,16 @@ $("#prevBtn").click(function () {
   }
 });
 
+
 // VIEW SWITCH
 $("#gridBtn").click(() => {
-  $("#results").removeClass("list-view").addClass("grid-view");
+  $("#results")
+    .removeClass("list-view")
+    .addClass("grid-view");
 });
 
 $("#listBtn").click(() => {
-  $("#results").removeClass("grid-view").addClass("list-view");
+  $("#results")
+    .removeClass("grid-view")
+    .addClass("list-view");
 });
