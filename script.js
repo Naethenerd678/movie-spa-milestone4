@@ -8,11 +8,15 @@ const API_KEY = "796ef61929e36fe299d63b551c9a6eef";
 function openTab(evt, tabID) {
 
   if (tabID === 'Search_Results') {
+
     $('#Collections').hide();
     $('#Search_Results').show();
+
   } else {
+
     $('#Search_Results').hide();
     $('#Collections').show();
+
   }
 
 }
