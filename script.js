@@ -71,10 +71,12 @@ $.ajax({
     const html = Mustache.render(template, movie);    
     $("#details").html(html);
   },
-  error: function(error) {
+ error: function(error) {
     console.error("Details failed:", error);
   }
 });
+
+}); 
   
 // PAGINATION
 $("#nextBtn").click(function () {
