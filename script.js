@@ -29,14 +29,16 @@ function searchButtonOnClick() {
   currentPage = 1;
 
   searchMovies();
-  
+
 }
 
 // SEARCH MOVIES
 function searchMovies() {
 
   $.ajax({
+
     url: "https://api.themoviedb.org/3/search/movie",
+
     method: "GET",
 
     data: {
@@ -46,6 +48,7 @@ function searchMovies() {
     },
 
     success: function(data) {
+
       console.log("Current Page:", currentPage);
 
       renderMovies(data.results);
@@ -109,7 +112,8 @@ $(document).on("click", ".movie-card", function () {
   });
 
 });
-$(document).ready(function () {
+
+// PAGE + VIEW BUTTONS
 $(document).ready(function () {
 
   // NEXT PAGE
