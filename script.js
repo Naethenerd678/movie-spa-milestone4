@@ -1,3 +1,4 @@
+alert("script connected");
 let currentPage = 1;
 let currentQuery = "";
 
