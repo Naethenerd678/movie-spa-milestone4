@@ -109,43 +109,47 @@ $(document).on("click", ".movie-card", function () {
   });
 
 });
+$(document).ready(function () {
+$(document).ready(function () {
 
-// NEXT PAGE
-$("#nextBtn").click(function () {
+  // NEXT PAGE
+  $("#nextBtn").click(function () {
 
-  currentPage++;
-
-  searchMovies();
-
-});
-
-// PREVIOUS PAGE
-$("#prevBtn").click(function () {
-
-  if (currentPage > 1) {
-
-    currentPage--;
+    currentPage++;
 
     searchMovies();
 
-  }
+  });
 
-});
+  // PREVIOUS PAGE
+  $("#prevBtn").click(function () {
 
-// GRID VIEW
-$("#gridBtn").click(function () {
+    if (currentPage > 1) {
 
-  $("#results")
-    .removeClass("list-view")
-    .addClass("grid-view");
+      currentPage--;
 
-});
+      searchMovies();
 
-// LIST VIEW
-$("#listBtn").click(function () {
+    }
 
-  $("#results")
-    .removeClass("grid-view")
-    .addClass("list-view");
+  });
+
+  // GRID VIEW
+  $("#gridBtn").click(function () {
+
+    $("#results")
+      .removeClass("list-view")
+      .addClass("grid-view");
+
+  });
+
+  // LIST VIEW
+  $("#listBtn").click(function () {
+
+    $("#results")
+      .removeClass("grid-view")
+      .addClass("list-view");
+
+  });
 
 });
