@@ -3,18 +3,21 @@ let currentQuery = "";
 
 const API_KEY = "796ef61929e36fe299d63b551c9a6eef";
 
+// TAB SWITCHING
 function openTab(evt, tabID) {
+
   if (tabID === 'Search_Results') {
-    $('#Collections').css('display','none');    
-    $('#Search_Results').css('display','block');       
+    $('#Collections').hide();
+    $('#Search_Results').show();
   } else {
-    $('#Search_Results').css('display','none');    
-    $('#Collections').css('display','block');          
+    $('#Search_Results').hide();
+    $('#Collections').show();
   }
+
 }
 
+// SEARCH BUTTON
 function searchButtonOnClick() {
-  console.log('searchBtn');
 
   currentQuery = $("#searchInput").val();
 
@@ -24,32 +27,46 @@ function searchButtonOnClick() {
   }
 
   currentPage = 1;
+
   searchMovies();
 }
 
+// SEARCH MOVIES
 function searchMovies() {
-  console.log('searchMovies();');
 
   $.ajax({
     url: "https://api.themoviedb.org/3/search/movie",
     method: "GET",
+
     data: {
       api_key: API_KEY,
       query: currentQuery,
       page: currentPage
     },
-    success: function (data) {
+
+    success: function(data) {
+
       renderMovies(data.results);
-      $("#pageInfo").text(`Page ${data.page} of ${data.total_pages}`);
+
+      $("#pageInfo").text(
+        `Page ${data.page} of ${data.total_pages}`
+      );
+
     },
+
     error: function(error) {
       console.error("Search failed:", error);
     }
+
   });
+
 }
+
 // RENDER MOVIES
 function renderMovies(movies) {
+
   const template = $("#movie-template").html();
+
   let html = "";
 
   movies.forEach(movie => {
@@ -57,21 +74,30 @@ function renderMovies(movies) {
   });
 
   $("#results").html(html);
+
 }
 
-// CLICK MOVIE → DETAILS
+// MOVIE DETAILS
 $(document).on("click", ".movie-card", function () {
 
   const id = $(this).data("id");
 
   $.ajax({
-    url: `https://api.themoviedb.org/3/movie/${id}`,
-    data: { api_key: API_KEY },
 
-    success: function (movie) {
+    url: `https://api.themoviedb.org/3/movie/${id}`,
+
+    data: {
+      api_key: API_KEY
+    },
+
+    success: function(movie) {
+
       const template = $("#details-template").html();
+
       const html = Mustache.render(template, movie);
+
       $("#details").html(html);
+
     },
 
     error: function(error) {
@@ -80,32 +106,44 @@ $(document).on("click", ".movie-card", function () {
 
   });
 
-}); // <-- THIS closes movie-card click
+});
 
-
-// PAGINATION
+// NEXT PAGE
 $("#nextBtn").click(function () {
+
   currentPage++;
+
   searchMovies();
+
 });
 
+// PREVIOUS PAGE
 $("#prevBtn").click(function () {
+
   if (currentPage > 1) {
+
     currentPage--;
+
     searchMovies();
+
   }
+
 });
 
+// GRID VIEW
+$("#gridBtn").click(function () {
 
-// VIEW SWITCH
-$("#gridBtn").click(() => {
   $("#results")
     .removeClass("list-view")
     .addClass("grid-view");
+
 });
 
-$("#listBtn").click(() => {
+// LIST VIEW
+$("#listBtn").click(function () {
+
   $("#results")
     .removeClass("grid-view")
     .addClass("list-view");
+
 });
