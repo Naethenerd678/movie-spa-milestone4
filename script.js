@@ -4,28 +4,32 @@ let currentQuery = "";
 const API_KEY = "796ef61929e36fe299d63b551c9a6eef";
 
 function openTab(evt, tabID) {
-  if (tabID == 'Search_Results') {
+  if (tabID === 'Search_Results') {
     $('#Collections').css('display','none');    
     $('#Search_Results').css('display','block');       
-  } else { // tabID == 'Collections'
+  } else {
     $('#Search_Results').css('display','none');    
     $('#Collections').css('display','block');          
-  }    
-  // Hide content and remove active class from buttons
-  // Display target tab and add active class
+  }
 }
 
 function searchButtonOnClick() {
-  console.log('searchBtn');  
+  console.log('searchBtn');
+
   currentQuery = $("#searchInput").val();
+
+  if (currentQuery.trim() === "") {
+    alert("Please enter a movie title.");
+    return;
+  }
+
   currentPage = 1;
   searchMovies();
 }
 
-
-
 function searchMovies() {
   console.log('searchMovies();');
+
   $.ajax({
     url: "https://api.themoviedb.org/3/search/movie",
     method: "GET",
@@ -37,10 +41,12 @@ function searchMovies() {
     success: function (data) {
       renderMovies(data.results);
       $("#pageInfo").text(`Page ${data.page} of ${data.total_pages}`);
+    },
+    error: function(error) {
+      console.error("Search failed:", error);
     }
   });
 }
-
 // RENDER MOVIES
 function renderMovies(movies) {
   const template = $("#movie-template").html();
@@ -57,17 +63,19 @@ function renderMovies(movies) {
 $(document).on("click", ".movie-card", function () {
   const id = $(this).data("id");
 
-  $.ajax({
-    url: `https://api.themoviedb.org/3/movie/${id}`,
-    data: { api_key: API_KEY },
-    success: function (movie) {
-      const template = $("#details-template").html();
-      const html = Mustache.render(template, movie);    
-      $("#details").html(html);
-    }
-  });
+$.ajax({
+  url: `https://api.themoviedb.org/3/movie/${id}`,
+  data: { api_key: API_KEY },
+  success: function (movie) {
+    const template = $("#details-template").html();
+    const html = Mustache.render(template, movie);    
+    $("#details").html(html);
+  },
+  error: function(error) {
+    console.error("Details failed:", error);
+  }
 });
-
+  
 // PAGINATION
 $("#nextBtn").click(function () {
   currentPage++;
