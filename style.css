@@ -3,7 +3,6 @@ body {
   text-align: center;
 }
 
-/* Tabs */
 .tabcontent {
   padding: 10px;
   border: 1px solid #ccc;
@@ -13,18 +12,15 @@ body {
   background-color: #ccc;
 }
 
-/* Container */
 .movie-grid {
   width: 100%;
   padding: 20px;
   box-sizing: border-box;
 }
 
-/* Movie Cards */
 .movie-card {
   border: 1px solid #ccc;
   padding: 10px;
-  cursor: pointer;
   text-align: center;
   box-sizing: border-box;
 }
