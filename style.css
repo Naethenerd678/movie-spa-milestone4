@@ -33,7 +33,7 @@ body {
 .movie-grid.grid-view {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(70px, 70px));
-  gap: 16px;
+  gap: 8px;
   justify-content: center;
 }
 
