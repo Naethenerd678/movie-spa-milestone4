@@ -1,8 +1,10 @@
 alert("script connected");
+
 let currentPage = 1;
 let currentQuery = "";
 
 const API_KEY = "796ef61929e36fe299d63b551c9a6eef";
+
 
 // TAB SWITCHING
 function openTab(evt, tabID) {
@@ -17,9 +19,12 @@ function openTab(evt, tabID) {
     $('#Search_Results').hide();
     $('#Collections').show();
 
+    loadPopularMovies();
+
   }
 
 }
+
 
 // SEARCH BUTTON
 function searchButtonOnClick() {
@@ -36,6 +41,7 @@ function searchButtonOnClick() {
   searchMovies();
 
 }
+
 
 // SEARCH MOVIES
 function searchMovies() {
@@ -72,6 +78,35 @@ function searchMovies() {
 
 }
 
+
+// LOAD POPULAR MOVIES
+function loadPopularMovies() {
+
+  $.ajax({
+
+    url: "https://api.themoviedb.org/3/movie/popular",
+
+    method: "GET",
+
+    data: {
+      api_key: API_KEY
+    },
+
+    success: function(data) {
+
+      renderMovies(data.results);
+
+    },
+
+    error: function(error) {
+      console.error("Popular movies failed:", error);
+    }
+
+  });
+
+}
+
+
 // RENDER MOVIES
 function renderMovies(movies) {
 
@@ -80,12 +115,15 @@ function renderMovies(movies) {
   let html = "";
 
   movies.forEach(movie => {
+
     html += Mustache.render(template, movie);
+
   });
 
   $("#results").html(html);
 
 }
+
 
 // MOVIE DETAILS
 $(document).on("click", ".movie-card", function () {
@@ -117,6 +155,7 @@ $(document).on("click", ".movie-card", function () {
   });
 
 });
+
 
 // PAGE + VIEW BUTTONS
 $(document).ready(function () {
