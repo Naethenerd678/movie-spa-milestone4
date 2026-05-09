@@ -33,7 +33,7 @@ body {
 .movie-grid.grid-view {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(70px, 70px));
-  gap: 8px;
+  gap: 3px;
   justify-content: center;
 }
 
@@ -45,5 +45,5 @@ body {
 }
 
 .movie-grid.list-view .movie-card {
-  width: 40%;
+  width: 20%;
 }
