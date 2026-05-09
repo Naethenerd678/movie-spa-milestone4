@@ -49,3 +49,15 @@ body {
 .movie-grid.list-view .movie-card {
   width: 80%;
 }
+/* DETAILS SECTION */
+#details {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+#details p {
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
