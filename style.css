@@ -32,8 +32,9 @@ body {
 /* GRID VIEW */
 .movie-grid.grid-view {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(180px, 220px));
   gap: 16px;
+  justify-content: center;
 }
 
 /* LIST VIEW */
@@ -44,5 +45,5 @@ body {
 }
 
 .movie-grid.list-view .movie-card {
-  width: 80%;
+  width: 60%;
 }
