@@ -32,9 +32,8 @@ body {
 /* GRID VIEW */
 .movie-grid.grid-view {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 90px));
-  gap: 9px;
-  justify-content: center;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 300px));
+justify-content: center;
 }
 
 /* LIST VIEW */
